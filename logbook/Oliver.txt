@@ -1,0 +1,28 @@
+We decided that Maria and Layla wanted to do as much of the setup as possible since I have done it multiple times before so did most of my work at the end of the project.
+
+w36
+Planning
+
+w37
+Planning
+
+w38
+Planning
+And making issues
+
+w39
+Fixed typo in README
+Fixed remaining linter errors/warnings throughout the app.
+Cleaned up the project to ensure it is clean and quality is good.
+
+w40
+CICD
+
+w41
+
+Refactored notes and redesigned layout
+
+w42
+Implemented taskmanager
+Implemented Websockets for shared notes
+
