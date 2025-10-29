@@ -1,4 +1,4 @@
-We decided that Maria and Layla wanted to do as much of the setup as possible since I have done it multiple times before so did most of my work at the end of the project.
+We decided that Maria and Layla were to do as much of the setup as possible since I have done it multiple times before, so most of my work is towards the end of the project.
 
 w36
 Planning
@@ -19,10 +19,9 @@ w40
 CICD
 
 w41
-
 Refactored notes and redesigned layout
 
 w42
-Implemented taskmanager
+Implemented taskmanager page with dashboard and calender
 Implemented Websockets for shared notes
 
