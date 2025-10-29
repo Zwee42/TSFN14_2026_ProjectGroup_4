@@ -1,0 +1,32 @@
+w37
+Share files functionality completed
+Small change to trash button on item page
+Note pages and functionality completed
+Note page partially completed
+Fixed project structure
+Miscellaneous changes
+Database adjustments
+Added database
+
+w38
+Fixed most linter errors
+Merged remote main into test
+Completed some API tests
+Made minor changes
+
+w39
+Fixed login test message
+Personal changes committed
+
+w40
+Made changes to main
+
+w41
+Updated fixes and merged branch 'test'
+Resolved merge conflict in auth.ts
+Fixed forgotPassword and resetPassword tests
+Fixed token for reset password
+Fixed forgot password functionality
+
+w42
+Fixed homepage buttons and expand button in trash
