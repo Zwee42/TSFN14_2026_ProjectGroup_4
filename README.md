@@ -6,6 +6,7 @@
 | Oliver Fiala      | https://github.com/Zwee42    |
 | Maria Birtman     | https://github.com/diexiy    |
 | Leyla Al Sheikha  | https://github.com/LeylaAl1  |
+| Majd Morad        | https://github.com/Majd01M   |
 
 
 
