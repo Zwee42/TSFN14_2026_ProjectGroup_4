@@ -27,7 +27,7 @@ The key technologies, frameworks, and libraries involved.
   
 
 
-![](https://cdn.discordapp.com/attachments/1412754111358832640/1465720369339170826/IMG_5939.jpg?ex=697a21f7&is=6978d077&hm=16060c496d022eb77dae5c4db69850e458b39773a2bcea8dae7012c84aaa8b20&)
+![](task_1_diagram.jpg)
 
 
 
