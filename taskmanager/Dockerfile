@@ -1,4 +1,6 @@
 # Use Node.js LTS version
+# Note: Using full node:20 image instead of node:20-alpine
+# Alpine had npm exit handler issues during testing that prevented reliable builds
 FROM node:20
 
 # Set working directory
