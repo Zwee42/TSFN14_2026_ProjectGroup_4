@@ -21,8 +21,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             const {username, email, password } = req.body; // the data som cliet skickar ( frontend) till backend i bodyin;
 
 
-            console.log("creating user:", username, email);
-
 
             if (!username || !email || !password ) {
                 return res.status(400).json ({message: "whoops! fill in all fields"});
@@ -46,7 +44,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 const newUser = new User({username, email, password: hashedPassword});
                 await newUser.save();
 
-                return res.status(201).json({message: "all gwent good!"});
+                return res.status(201).json({message: "all went good!"});
 
                 
 
