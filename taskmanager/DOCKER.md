@@ -14,7 +14,10 @@ This guide explains how to run the Task Manager application using Docker with Mo
 1. Sign up for [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) (free tier available)
 2. Create a cluster
 3. Create a database user
-4. Whitelist your IP address (or use 0.0.0.0/0 for access from anywhere)
+4. Whitelist your IP address in Network Access
+   - For development: Add your current IP address
+   - For production: Add specific server IP addresses
+   - **Security Warning**: Using `0.0.0.0/0` (access from anywhere) is NOT recommended for production as it exposes your database to potential attacks
 5. Get your connection string from the "Connect" button
 
 ### 2. Configure Environment Variables
