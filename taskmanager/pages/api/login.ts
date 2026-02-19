@@ -65,7 +65,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     } catch (err) {
         // --- Structured error logging ---
-        console.error("[API Login Error]", err);
-        return res.status(500).json({ error: "Something went wrong :(" });
+        console.error("error in apu login", err);
+        return res.status(500).json({error: "something went wrong :("});
     }
 }

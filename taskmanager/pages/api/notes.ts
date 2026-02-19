@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import dbConnect from "@/lib/mongodb";
 import Note from "@/models/Note";
+import { FilterQuery } from "mongoose";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
@@ -30,7 +31,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         ]
       };
 
-      let finalQuery: any = baseQuery;
+      let finalQuery: FilterQuery<typeof Note> = baseQuery;
 
       if (!includeDeleted) {
         finalQuery = {
@@ -83,13 +84,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   } catch (err) {
 
-    // ✅ Structured error logging
-    console.error("[API Notes Error]", err);
-
     if (err instanceof Error) {
       return res.status(500).json({ message: err.message });
     }
-
     return res.status(500).json({ message: "Unknown error" });
   }
 }

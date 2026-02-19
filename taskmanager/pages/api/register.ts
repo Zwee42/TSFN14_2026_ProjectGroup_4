@@ -46,13 +46,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     } catch (err: unknown) {
 
-        //  Structured error logging
-        console.error("[API Register Error]", err);
+        
+       console.error(err);
 
-        if (err instanceof MongoServerError && err.code === 11000) {
-            return res.status(400).json({ message: "Email or username already taken" });
+            if (err instanceof MongoServerError && err.code === 11000) {
+                return res.status(400).json({message: "email or username laready taken"});
+
+            }
+                        return res.status(500).json({error: " something went wrong :( "});
+
         }
-
-        return res.status(500).json({ error: "Something went wrong :(" });
-    }
 }
