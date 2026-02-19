@@ -4,7 +4,12 @@ import Note from "@/models/Note";
 import { FilterQuery } from "mongoose";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+
+  // Request logging (Task 2 requirement)
+  console.log(`[Request] ${req.method} ${req.url}`);
+
   await dbConnect();
+  console.log("[Notes] Connected to database");
 
   try {
     if (req.method === "GET") {

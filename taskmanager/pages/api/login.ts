@@ -1,22 +1,21 @@
-
 import type { NextApiRequest, NextApiResponse } from "next";
 import dbConnect from "@/lib/mongodb";
-import User from "@/models/User"
+import User from "@/models/User";
 import bcrypt from "bcryptjs";
-import {serialize} from "cookie";
-
-
+import { serialize } from "cookie";
 import jwt from "jsonwebtoken";
-// import cookie from "cookie";
 
 const SECRET = process.env.JWT_SECRET || "supersecret"; // move to env file
 
-// async????
+
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
-    if (req.method !== "POST") {
-        return res.status(405).json({message:"only post requests allowed"});
+    // --- Request logging ---
+    console.log(`[Request] ${req.method} ${req.url}`);
 
+    if (req.method !== "POST") {
+        return res.status(405).json({ message: "Only POST requests allowed" });
     }
 
     try {

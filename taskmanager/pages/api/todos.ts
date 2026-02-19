@@ -3,18 +3,22 @@ import dbConnect from '@/lib/mongodb';
 import Todo from '@/models/Todo';
 
 interface Query {
-    userId: string | string[];
-    deadline?: {
-        $gte?: Date;
-        $lte?: Date;
-        $lt?: Date;
-    };
-    status?: {
-        $ne?: string;
-    };
+  userId: string | string[];
+  deadline?: {
+    $gte?: Date;
+    $lte?: Date;
+    $lt?: Date;
+  };
+  status?: {
+    $ne?: string;
+  };
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+
+  //  Request logging (Task 2 requirement)
+  console.log(`[Request] ${req.method} ${req.url}`);
+
   await dbConnect();
 
   const { method } = req;
