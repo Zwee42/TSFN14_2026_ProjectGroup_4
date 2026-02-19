@@ -19,53 +19,59 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     try {
-        // Connect to database
         await dbConnect();
-        console.log("Database connected");
+        console.log("connected to the database");
 
-        const { email, password } = req.body;
-        console.log("Login attempt:", { email });
+        const {email, password} = req.body;
+        console.log("login försök:", {email, password});
 
         if (!email || !password) {
-            return res.status(400).json({ message: "Please fill in all fields" });
+            return res.status(400).json({message: "please fill in all feilds"});
+
         }
+            const user = await User.findOne({email});
+            if (!user) {
+                    return res.status(400).json({message: "user not found"});
+            }
 
-        const user = await User.findOne({ email });
-        if (!user) {
-            return res.status(400).json({ message: "User not found" });
-        }
+            const isMatch = await bcrypt.compare(password, user.password);
+               
+            if(!isMatch) {
+                    return res.status(400).json({message: "wrong password"});
+                }
 
-        const isMatch = await bcrypt.compare(password, user.password);
-        if (!isMatch) {
-            return res.status(400).json({ message: "Wrong password" });
-        }
 
-        // Create JWT token
-        const token = jwt.sign(
-            { email: user.email, username: user.username },
-            SECRET,
-            { expiresIn: "1h" }
-        );
+                const token = jwt.sign(
+                    {
+                        email:user.email, username: user.username
+                    },
+                    SECRET,
+                    {expiresIn: "1h" }
+                );
 
-        // Set auth cookie
-        const cookie = serialize("auth_token", token, {
-            httpOnly: true,
-            secure: process.env.NODE_ENV === "production",
-            sameSite: "strict",
-            maxAge: 3600,
-            path: "/",
-        });
 
-        res.setHeader("Set-Cookie", cookie);
+                 const cookie = serialize ("auth_token", token,  { // textblob = serilaze
+                         httpOnly: true, // man kan inte redigera med javaskrcip
+                         secure: process.env.NODE_ENV === "production", // encryptera kakan dubbel encypted
+                         sameSite: "strict", // bara våran hemsida som kan använda kakan
+                         maxAge: 3600, // hur lång tid kakan håller i s
+                         path: "/", // vilka ställen man har timern på 
+                     }) ;
 
-        return res.status(200).json({
-            message: "Login successful",
-            user: { username: user.username, email: user.email }
-        });
+                     res.setHeader("Set-Cookie", cookie);
 
-    } catch (err) {
-        // --- Structured error logging ---
+
+
+
+            return res.status(200).json({
+                message: "Login succeful",
+                user: {username: user.name, email: user.email}
+            })
+
+
+    } catch(err) {
         console.error("error in apu login", err);
         return res.status(500).json({error: "something went wrong :("});
     }
+    
 }
