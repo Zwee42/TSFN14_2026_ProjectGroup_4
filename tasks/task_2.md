@@ -34,12 +34,15 @@ In these situations, the whole application becomes unavailable since no alternat
 
 Revised architecture
 
+
 Current architecture:
 
-Frontend → Backend → MongoDB
+**Frontend → Backend → MongoDB**
 
 
 Proposed architecture:
+
+```
 
        ┌─────────────────────┐
        │      Frontend       │
@@ -57,6 +60,8 @@ Backend 1   Backend 2   Backend 3
    └───────┬───┴───┬───────┘
            ▼       ▼
         MongoDB (shared)
+
+```
 
 
 Multiple backend instances run in Docker containers, and a load balancer distributes incoming requests among them.
