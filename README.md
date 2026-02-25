@@ -1,4 +1,4 @@
-,# Hello My Prodoctivity (HMP)
+# Hello My Prodoctivity (HMP)
 
 ## Group Members
 | Name              | GitHub Handle                |
