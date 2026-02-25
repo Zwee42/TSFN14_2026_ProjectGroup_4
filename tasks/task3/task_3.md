@@ -1,4 +1,4 @@
-```
+		
 **Introduction**
 
 The objective of Task 3 was to understand how containerization, cloud infrastructure, and load balancing work together to improve availability and fault tolerance.
@@ -122,4 +122,4 @@ The deployment demonstrated how containerization, Kubernetes, and cloud infrastr
 This task prepares the project for future work on monitoring, scaling, and load testing.
 
 
-```
+
