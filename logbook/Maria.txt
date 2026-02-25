@@ -1,0 +1,34 @@
+w37
+Initialized the Next.js project
+Updated project structure and added a basic user model
+Made small index updates and merged with main
+
+w38
+Added registration and login functionality
+Connected authentication to the database
+Began building user.ts model
+Updated README with new project name and info
+
+w39
+Implemented login, registration, and homepage foundations
+Added timer feature prototype
+Tested database connections for authentication
+Merged several PRs and updated README
+
+w40
+Continued development on timer and login/register pages
+Merged updates from main
+Added more UI and page structure improvements
+
+w41
+Implemented cookies and logout functionality
+Protected routes for non-logged-in users
+Created and fixed tests for login, logout, and reset password
+Addressed linter issues and performed minor cleanup
+
+w42
+Finalized login/register flow and merged PRs
+Fixed collaboration and reset password UI issues
+Adjusted button positions (knapp fix)
+Cleaned up JSON data and minor UI fixes
+
