@@ -40,4 +40,4 @@ jobs:
         run: |
           kubectl set image deployment/taskmanager taskmanager=${{ secrets.ACR_LOGIN_SERVER }}/taskmanager:${{ github.sha }} -n default
           kubectl rollout status deployment/taskmanager -n default
-          working-directory: .
+        working-directory: .
