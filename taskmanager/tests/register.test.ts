@@ -99,7 +99,7 @@ describe('/api/register', () => {
     await handler(req, res);
 
     expect(res._getStatusCode()).toBe(201);
-    expect(JSON.parse(res._getData())).toEqual({ message: "all gwent good!" });
+    expect(JSON.parse(res._getData())).toEqual({ message: "all went good!" });
     expect(mockSave).toHaveBeenCalled();
     // Verifiera att User konstruktorn anropas
     expect(User).toHaveBeenCalledWith({
