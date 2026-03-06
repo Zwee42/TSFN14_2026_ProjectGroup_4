@@ -1,6 +1,7 @@
 **Task 5 – Monitoring and Basic Scaling Report**
 
 **How Kubernetes knows whether your service is healthy**
+
 Kubernetes monitors the backend service using three types of probes defined in the Deployment YAML:
 	1.	Startup Probe – Checks whether the application has successfully started. If the probe fails repeatedly, Kubernetes will restart the pod until it starts correctly.
 	2.	Readiness Probe – Determines if the pod is ready to serve traffic. Only pods that pass this check are included in the Service endpoints, ensuring that requests are not sent to unready pods.
@@ -11,6 +12,7 @@ The probes are implemented as HTTP GET requests to /health on port 3000. By obse
 ⸻
 
 **When and why scaling occurs**
+
 Horizontal Pod Autoscaler (HPA) automatically adjusts the number of pod replicas based on observed resource metrics (CPU usage in this case).
 	•	Scaling Up – Occurs when the CPU usage of existing pods exceeds the target threshold (50%). Kubernetes launches additional pods to handle increased load.
 	•	Scaling Down – Occurs when CPU usage drops below the target threshold, reducing unnecessary resource consumption by terminating excess pods.
