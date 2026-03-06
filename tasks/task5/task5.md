@@ -21,10 +21,11 @@ Scaling ensures that the backend can handle varying workloads efficiently while 
 Logs and metrics can be observed in real-time through K9s or kubectl get hpa to verify the scaling behavior.
 
 
+
 **please see the attached screenshots for Evidence that:**
 
-**logs are produced and observable**
+**-logs are produced and observable**
 
-**probes are working**
+**-probes are working**
 
-**scaling occurs at least once**
+**-scaling occurs at least once**
