@@ -20,27 +20,27 @@ spec:
           imagePullPolicy: Always
           resources:
             requests:
-              cpu: "100m"
+              cpu: "1000m"
               memory: "128Mi"
             limits:
-              cpu: "500m"
-              memory: "512Mi"
+              cpu: "2000m"
+              memory: "5120Mi"
           # Health probes
           livenessProbe:
             httpGet:
-              path: /health
+              path: /api/health-liveness
               port: 3000
             initialDelaySeconds: 5
             periodSeconds: 10
           readinessProbe:
             httpGet:
-              path: /health
+              path: /api/health-readiness
               port: 3000
             initialDelaySeconds: 5
             periodSeconds: 5
           startupProbe:
             httpGet:
-              path: /health
+              path: /api/health-startup
               port: 3000
             failureThreshold: 30
             periodSeconds: 10
