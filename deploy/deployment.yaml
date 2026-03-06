@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend-deployment
+  name: taskmanager
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: backend
+      app: taskmanager
   template:
     metadata:
       labels:
-        app: backend
+        app: taskmanager
     spec:
       containers:
-        - name: backend
-          image: task3acr2fft0n.azurecr.io/backend:latest
+        - name: taskmanager
+          image: task3acr.azurecr.io/taskmanager:v1
           ports:
             - containerPort: 3000
           imagePullPolicy: Always

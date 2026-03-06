@@ -6,23 +6,17 @@ terraform {
       source  = "hashicorp/azurerm"
       version = "~> 3.0"
     }
-    random = {
-      source  = "hashicorp/random"
-      version = "~> 3.6"
-    }
   }
 }
 
 provider "azurerm" {
-  features {}
+  features { 
+     resource_group {
+       prevent_deletion_if_contains_resources = false
+      }
+    }
 }
 
-# Behövs för att ACR-namn måste vara globalt unikt
-resource "random_string" "suffix" {
-  length  = 6
-  special = false
-  upper   = false
-}
 
 resource "azurerm_resource_group" "rg" {
   name     = var.resource_group_name
@@ -31,7 +25,7 @@ resource "azurerm_resource_group" "rg" {
 
 # Azure Container Registry (ACR)
 resource "azurerm_container_registry" "acr" {
-  name                = "${var.acr_name_prefix}${random_string.suffix.result}" # unikt
+  name                = "${var.acr_name_prefix}" # unikt
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
   sku                 = "Basic"
