@@ -121,5 +121,10 @@ The deployment demonstrated how containerization, Kubernetes, and cloud infrastr
 
 This task prepares the project for future work on monitoring, scaling, and load testing.
 
+Screenshots
+
+![](task3ss1.webp)
+![](task3ss2.webp)
+![](task3ss3.webp)
 
 

@@ -1,0 +1,43 @@
+name: CI/CD (Build + Deploy)
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-push-deploy:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ./taskmanager
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # --- Docker: build + push ---
+      - name: Log in to ACR
+        run: echo "${{ secrets.ACR_PASSWORD }}" | docker login ${{ secrets.ACR_LOGIN_SERVER }} -u ${{ secrets.ACR_USERNAME }} --password-stdin
+        working-directory: .
+
+      - name: Build Docker image
+        run: docker build -t ${{ secrets.ACR_LOGIN_SERVER }}/taskmanager:${{ github.sha }} ./taskmanager
+        working-directory: .
+
+      - name: Push Docker image
+        run: docker push ${{ secrets.ACR_LOGIN_SERVER }}/taskmanager:${{ github.sha }}
+        working-directory: .
+
+      # --- AKS deploy ---
+      - name: Set kubeconfig
+        run: |
+          mkdir -p $HOME/.kube
+          echo "${{ secrets.KUBECONFIG_DATA }}" > $HOME/.kube/config
+        working-directory: .
+
+      - name: Deploy to AKS (update image)
+        run: |
+          kubectl set image deployment/taskmanager taskmanager=${{ secrets.ACR_LOGIN_SERVER }}/taskmanager:${{ github.sha }} -n default
+          kubectl rollout status deployment/taskmanager -n default
+        working-directory: .
