@@ -10,7 +10,7 @@ variable "resource_group_name" {
 
 variable "acr_name_prefix" {
   type    = string
-  default = "task3acr" # prefix + random suffix => unikt
+  default = "task3acr" # prefix
 }
 
 variable "aks_name" {
@@ -26,4 +26,5 @@ variable "dns_prefix" {
 variable "vm_size" {
   type    = string
   default = "standard_b2as_v2"
+  
 }
