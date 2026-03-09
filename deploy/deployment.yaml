@@ -13,18 +13,18 @@ spec:
         app: taskmanager
     spec:
       containers:
-        - name: backend
+        - name: taskmanager
           image: task5acr85666f.azurecr.io/backend:latest
           ports:
             - containerPort: 3000
           imagePullPolicy: Always
           resources:
             requests:
-              cpu: "1000m"
-              memory: "128Mi"
+              cpu: "500m"
+              memory: "1Gi"
             limits:
-              cpu: "2000m"
-              memory: "5120Mi"
+              cpu: "1"
+              memory: "2Gi"
           # Health probes
           livenessProbe:
             httpGet:
