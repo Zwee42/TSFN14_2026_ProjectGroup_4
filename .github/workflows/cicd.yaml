@@ -36,6 +36,13 @@ jobs:
           echo "${{ secrets.KUBECONFIG_DATA }}" > $HOME/.kube/config
         working-directory: .
 
+      - name: Create Kubernetes secret
+        run: |
+          kubectl create secret generic taskmanager-secrets \
+            --from-literal=mongoURI="${{ secrets.MONGO_URI }}" \
+            -n default --dry-run=client -o yaml | kubectl apply -f -
+        working-directory: .
+
       - name: Deploy to AKS (update image)
         run: |
           kubectl set image deployment/taskmanager taskmanager=${{ secrets.ACR_LOGIN_SERVER }}/taskmanager:${{ github.sha }} -n default
