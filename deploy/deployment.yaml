@@ -25,6 +25,15 @@ spec:
             limits:
               cpu: "1"
               memory: "2Gi"
+
+          # Environment variables from Kubernetes Secret
+          env:
+            - name: MONGO_URI
+              valueFrom:
+                secretKeyRef:
+                  name: taskmanager-secrets
+                  key: mongoURI
+
           # Health probes
           livenessProbe:
             httpGet:
@@ -32,12 +41,14 @@ spec:
               port: 3000
             initialDelaySeconds: 5
             periodSeconds: 10
+
           readinessProbe:
             httpGet:
               path: /api/health-readiness
               port: 3000
             initialDelaySeconds: 5
             periodSeconds: 5
+
           startupProbe:
             httpGet:
               path: /api/health-startup
