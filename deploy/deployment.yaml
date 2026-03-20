@@ -28,7 +28,7 @@ spec:
 
           # Environment variables from Kubernetes Secret
           env:
-            - name: MONGO_URI
+            - name: MONGODB_URI
               valueFrom:
                 secretKeyRef:
                   name: taskmanager-secrets
